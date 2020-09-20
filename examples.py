@@ -1,11 +1,12 @@
-#Examples :
-
 np.random.seed(12)
+from CMLE import BinLogitCMLE
 from matplotlib import pyplot as plt
+
 def err_cdf(x):
     '''Logistic model : T = 3, standard normal fixed effect and one random 
     binary covariate.'''
     return 1 / (1 + np.exp(-x))
+
 def simulate_onebinvar(n, T, beta_0):
     K = 1
     W = np.ndarray(shape=(n, T, K)) # explanatory variables
@@ -17,6 +18,8 @@ def simulate_onebinvar(n, T, beta_0):
         fe = np.random.normal(0,1)
         Y[i,:] = np.array([float(np.random.binomial(1, err_cdf(np.dot(W[i,j], beta_0) + fe))) for j in range(3)])
     return W, Y
+
+# Examples :
 W, Y = simulate_onebinvar(10000, 3, np.array([1.]))
 model = BinLogitCMLE(A= W, b = Y)
 
