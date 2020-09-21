@@ -1,4 +1,4 @@
-np.random.seed(12)
+import numpy as np
 from CMLE import BinLogitCMLE
 from matplotlib import pyplot as plt
 
@@ -20,6 +20,7 @@ def simulate_onebinvar(n, T, beta_0):
     return W, Y
 
 # Examples :
+np.random.seed(12)
 W, Y = simulate_onebinvar(10000, 3, np.array([1.]))
 model = BinLogitCMLE(A= W, b = Y)
 
