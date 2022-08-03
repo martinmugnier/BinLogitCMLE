@@ -3,11 +3,11 @@ from CMLE import BinLogitCMLE
 from matplotlib import pyplot as plt
 
 def err_cdf(x):
-    '''Logistic model : T = 3, standard normal fixed effect and one random 
-    binary covariate.'''
     return 1 / (1 + np.exp(-x))
 
 def simulate_onebinvar(n, T, beta_0):
+    '''Logistic model : T = 3, standard normal fixed effect and one random 
+    binary covariate.'''
     K = 1
     W = np.ndarray(shape=(n, T, K)) # explanatory variables
     for row in range(n):
